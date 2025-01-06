@@ -4,7 +4,6 @@
 
 <img width="150" src="https://github.com/user-attachments/assets/15878219-e357-4c26-98c7-07949522ef63" />
 
-
 ## 機能
 
 - PokeAPI を使用した最新のポケモン名データの取得
@@ -27,16 +26,20 @@ cd poke-siritori
 poetry install
 ```
 
-## 使用方法
+## Huggingface Space での使用
+
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces)
+
+このプロジェクトは Huggingface Space で公開可能です。以下の手順で使用できます：
 
 1. モデルのダウンロード:
 
    - [Google Drive](https://drive.google.com/file/d/1AYTLqBspFKvIouA2OXXtNkePIRUyAYRa/view?usp=sharing)からモデルファイルをダウンロードし、プロジェクトルートに配置してください。
 
-2. 対話の実行:
+2. ローカルでの使用:
 
 ```bash
-poetry run python inference.py
+poetry run python app.py
 ```
 
 ## モデルの学習

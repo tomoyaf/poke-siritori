@@ -16,6 +16,7 @@ import math
 import numpy as np
 import pickle
 from torch.utils.tensorboard import SummaryWriter
+import gradio as gr
 
 # -------------------------------------------------------
 # 1. PokeAPIからポケモン名を取得 → ひらがな変換 → CSV保存
@@ -633,6 +634,28 @@ def generate_text(model, tokenizer, prompt: str, max_len=50, device="cpu"):
 # -------------------------------------------------------
 # main
 # -------------------------------------------------------
+def create_gradio_interface(model, tokenizer, device="cpu"):
+    def chat_interface(user_input, history):
+        history = history or []
+        prompt = "\n".join(history) + f"\n[USER] {user_input}\n[GPT] "
+        response = generate_text(model, tokenizer, prompt, max_len=80, device=device)
+        response = response[len(prompt):].split("\n")[0].strip()
+        history.append(f"[USER] {user_input}")
+        history.append(f"[GPT] {response}")
+        return history, history
+    
+    with gr.Blocks() as demo:
+        chatbot = gr.Chatbot()
+        with gr.Row():
+            txt = gr.Textbox(show_label=False, placeholder="ポケモン名を入力してください")
+        with gr.Row():
+            clear = gr.Button("Clear")
+        
+        txt.submit(chat_interface, [txt, chatbot], [chatbot, chatbot])
+        clear.click(lambda: None, None, chatbot, queue=False)
+    
+    return demo
+
 def main():
     # 0. もし既にCSVが無ければ取得＆保存
     csv_path = "pokemon_names.csv"

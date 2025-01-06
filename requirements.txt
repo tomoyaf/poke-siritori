@@ -1,0 +1,7 @@
+requests==2.32.3
+torch==2.5.1
+jaconv==0.4.0
+tqdm==4.67.1
+numpy==2.2.1
+tensorboard==2.18.0
+gradio>=4.0.0
