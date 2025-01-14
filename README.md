@@ -2,6 +2,12 @@
 
 ポケモンの名前でしりとり対話を行う AI モデルです。Transformer ベースの言語モデルを使用して、ポケモンの名前を学習し、しりとりルールに従った応答を生成します。
 
+https://huggingface.co/spaces/tomoyaf/poke-siritori
+
+https://github.com/user-attachments/assets/c2a6ec27-2927-4845-bb9f-248ce9a47494
+
+
+
 <img width="150" src="https://github.com/user-attachments/assets/15878219-e357-4c26-98c7-07949522ef63" />
 
 ## 機能
